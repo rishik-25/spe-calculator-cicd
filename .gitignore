@@ -1,0 +1,40 @@
+# --- Build output ---
+target/
+*.class
+*.jar
+*.war
+*.log
+
+# --- Maven ---
+.mvn/wrapper/maven-wrapper.jar
+dependency-reduced-pom.xml
+
+# --- VS Code ---
+.vscode/
+
+# --- IntelliJ IDEA ---
+.idea/
+*.iml
+*.ipr
+*.iws
+out/
+
+# --- Eclipse / STS ---
+.classpath
+.project
+.settings/
+.factorypath
+.apt_generated/
+
+# --- OS files ---
+.DS_Store
+Thumbs.db
+
+# --- Local environment and credentials (never commit) ---
+.env
+*.env
+.env.*
+*.pem
+*.key
+secrets/
+credentials*
