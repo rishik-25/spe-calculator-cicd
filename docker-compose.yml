@@ -32,7 +32,7 @@ services:
     networks:
       - calc-net
     healthcheck:
-      test: ["CMD-SHELL", "wget -qO- http://localhost/actuator/health | grep -q UP"]
+      test: ["CMD-SHELL", "wget -qO- http://127.0.0.1/actuator/health | grep -q UP"]
       interval: 10s
       timeout: 3s
       retries: 5
