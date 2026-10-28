@@ -1,0 +1,44 @@
+name: spe-calculator
+
+services:
+  calculator-api:
+    image: ${DOCKERHUB_USER:-rishik0425}/spe-calculator:${IMAGE_TAG:-latest}
+    container_name: calculator-api
+    restart: unless-stopped
+    environment:
+      SERVER_PORT: "8080"
+    expose:
+      - "8080"
+    networks:
+      - calc-net
+    healthcheck:
+      test: ["CMD-SHELL", "wget -qO- http://localhost:8080/actuator/health | grep -q '\"status\":\"UP\"'"]
+      interval: 10s
+      timeout: 3s
+      retries: 5
+      start_period: 30s
+
+  nginx:
+    image: nginx:stable-alpine
+    container_name: calculator-nginx
+    restart: unless-stopped
+    depends_on:
+      calculator-api:
+        condition: service_healthy
+    ports:
+      - "${HOST_PORT:-8081}:80"
+    volumes:
+      - ./nginx/nginx.conf:/etc/nginx/conf.d/default.conf:ro
+    networks:
+      - calc-net
+    healthcheck:
+      test: ["CMD-SHELL", "wget -qO- http://localhost/actuator/health | grep -q UP"]
+      interval: 10s
+      timeout: 3s
+      retries: 5
+      start_period: 5s
+
+networks:
+  calc-net:
+    name: spe-calc-net
+    driver: bridge
