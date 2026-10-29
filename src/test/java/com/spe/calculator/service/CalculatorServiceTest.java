@@ -23,7 +23,7 @@ class CalculatorServiceTest {
     // ---- addition ----
     @Test
     void addsTwoPositiveNumbers() {
-        assertResult("6", service.add(n("2"), n("3")));
+        assertResult("5", service.add(n("2"), n("3")));
     }
 
     @Test
