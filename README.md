@@ -12,3 +12,8 @@ Stack: Java 17, Spring Boot 4.1, Maven, JUnit 5, Git/GitHub, Jenkins, Docker, Do
     curl "http://localhost:9090/api/v1/add?a=2&b=3"
 
 The full documentation is added as the project develops.
+
+## CI/CD
+
+Every push to `main` triggers the Jenkins pipeline:
+checkout, build, test, Docker build, push to Docker Hub, deploy with Docker Compose behind Nginx.
