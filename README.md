@@ -1,6 +1,6 @@
 # SPE Calculator CI/CD
 
-End-to-end CI/CD pipeline for a Calculator REST API
+End-to-end CI/CD pipeline for a Calculator REST API.
 (CSE 816 - Software Production Engineering mini-project).
 
 ## Project overview
